@@ -21,18 +21,19 @@ public class CerealBoxHelper {
 		em.close();
 	}
 	
-	public List<CerealBox>showAllflavors() {
+	@SuppressWarnings(value = { "unchecked" })
+	public List<CerealBox> showAllBoxes() {
 		EntityManager em = emfactory.createEntityManager();
-		List<CerealBox>allBoxes = em.createQuery("SELECT i FROM CerealBox i").getResultList();
+		List<CerealBox> allBoxes = em.createQuery("SELECT i FROM CerealBox i").getResultList();
 		return allBoxes;
 	}
 	
-	public void	deleteflavor(CerealBox toDelete)	{
+	public void	deleteFlavor(CerealBox toDelete)	{
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<CerealBox>typedQuery = em.createQuery("select li from CerealBox li	where li.name = :selectedname	and	li.flavor	= :selectedflavor",	CerealBox.class);
-		typedQuery.setParameter("selectedname", toDelete.getName());
-		typedQuery.setParameter("selectedflavor",	toDelete.getFlavor());
+		TypedQuery<CerealBox>typedQuery = em.createQuery("select li from CerealBox li where li.name = :selectedName	and	li.flavor = :selectedFlavor", CerealBox.class);
+		typedQuery.setParameter("selectedName", toDelete.getName());
+		typedQuery.setParameter("selectedFlavor", toDelete.getFlavor());
 		typedQuery.setMaxResults(1);
 		CerealBox result = typedQuery.getSingleResult();
 		em.remove(result);
@@ -41,7 +42,6 @@ public class CerealBoxHelper {
 	}
 
 	public CerealBox searchForBoxById(int idToEdit)	{
-        // TODO	Auto-generated method stub
 	    EntityManager em = emfactory.createEntityManager();
 	    em.getTransaction().begin();
 	    CerealBox found = em.find(CerealBox.class, idToEdit);
@@ -49,31 +49,30 @@ public class CerealBoxHelper {
 	    return found;
 	}
 	
-	public	List<CerealBox>	searchForflavorByname(String	cerealName)	{
-//		TODO	Auto-generated	method	stub
+	public List<CerealBox> searchForBoxByName(String cerealName)	{
 	    EntityManager em = emfactory.createEntityManager();
 	    em.getTransaction().begin();
-	    TypedQuery<CerealBox> typedQuery = em.createQuery("select cb from CerealBox cb where cb.Name = :selectedname",	CerealBox.class);
-	    typedQuery.setParameter("Selected Cereal ", cerealName);
-	    List<CerealBox>	foundflavors	=	typedQuery.getResultList();
+	    TypedQuery<CerealBox> typedQuery = em.createQuery("select cb from CerealBox cb where cb.name = :selectedName",	CerealBox.class);
+	    typedQuery.setParameter("selectedName", cerealName);
+	    List<CerealBox>	found =	typedQuery.getResultList();
 	    em.close();
-	    return foundflavors;
+	    return found;
 	}
 	
-	public	List<CerealBox>	searchForBoxByflavor(String flavorName)	{
-        // TODO	Auto-generated method stub
+	public List<CerealBox> searchForBoxByFlavor(String cerealFlavor)	{
 	    EntityManager em = emfactory.createEntityManager();
 	    em.getTransaction().begin();
-	    TypedQuery<CerealBox> typedQuery = em.createQuery("select cb from CerealBox cb where cb.Name = :selectedflavor", CerealBox.class);
-	    typedQuery.setParameter("selectedflavor", flavorName);
-	    List<CerealBox>	foundFlavors = typedQuery.getResultList();
+	    TypedQuery<CerealBox> typedQuery = em.createQuery("select cb from CerealBox cb where cb.flavor = :selectedFlavor", CerealBox.class);
+	    typedQuery.setParameter("selectedFlavor", cerealFlavor);
+	    List<CerealBox>	found = typedQuery.getResultList();
 	    em.close();
-	    return foundFlavors;
+	    return found;
 	}
 
 	public void updateBox(CerealBox toEdit) {
-		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(toEdit);	
 		em.getTransaction().commit();
 		em.close();
 	}
