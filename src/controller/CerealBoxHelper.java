@@ -28,14 +28,19 @@ public class CerealBoxHelper {
 		return allBoxes;
 	}
 	
-	public void	deleteFlavor(CerealBox toDelete)	{
+	public void	deleteBox(CerealBox toDelete)	{
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<CerealBox>typedQuery = em.createQuery("select li from CerealBox li where li.name = :selectedName	and	li.flavor = :selectedFlavor", CerealBox.class);
+		TypedQuery<CerealBox>typedQuery = em.createQuery(
+				"select li from CerealBox li where li.name = :selectedName and li.flavor = :selectedFlavor",
+				CerealBox.class);
 		typedQuery.setParameter("selectedName", toDelete.getName());
 		typedQuery.setParameter("selectedFlavor", toDelete.getFlavor());
+		
 		typedQuery.setMaxResults(1);
+		
 		CerealBox result = typedQuery.getSingleResult();
+		
 		em.remove(result);
 		em.getTransaction().commit();
 		em.close();

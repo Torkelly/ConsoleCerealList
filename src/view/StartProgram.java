@@ -26,7 +26,7 @@ public class StartProgram {
 			System.out.print("Enter flavor to delete: ");
 			String flavor = in.nextLine();
 			CerealBox toDelete = new CerealBox(name, flavor);
-			cbh.deleteFlavor(toDelete);
+			cbh.deleteBox(toDelete);
 		}
 
 		private static void edit() {
@@ -50,7 +50,7 @@ public class StartProgram {
 			if (!found.isEmpty()) {
 				System.out.println("Found Results.");
 				for (CerealBox l : found) {
-					System.out.println(l.getCerealID() + " : " + l.getName() + ", " + l.getFlavor());
+					System.out.println(l.getID() + " : " + l.getName() + ", " + l.getFlavor());
 			}
 				
 				System.out.print("Which ID to edit: ");

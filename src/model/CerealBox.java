@@ -12,8 +12,8 @@ public class CerealBox {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="CerealID")
-	private int cerealID;
+	@Column(name="ID")
+	private int id;
 	@Column(name="Name")
 	private String name;
 	@Column(name="Flavor")
@@ -29,12 +29,12 @@ public class CerealBox {
 		super();
 	}
 	
-	public int getCerealID() {
-		return cerealID;
+	public int getID() {
+		return id;
 	}
 
-	public void setCerealID(int cerealID) {
-		this.cerealID = cerealID;
+	public void setID(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
