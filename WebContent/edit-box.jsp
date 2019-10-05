@@ -11,7 +11,7 @@
     <form action = "editBoxServlet" method="post">
         Box: <input type ="text" name = "name" value="${boxToEdit.name}">
         flavor: <input type = "text" name = "flavor" value= "${boxToEdit.flavor}">
-        <input type = "hidden" name = "ID" value="${boxToEdit.ID}">
+        <input type = "hidden" name = "id" value="${boxToEdit.id}">
         <input type = "submit" value="Save Edited Box">
     </form>
 </body>

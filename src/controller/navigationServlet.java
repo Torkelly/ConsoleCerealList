@@ -45,7 +45,7 @@ public class navigationServlet extends HttpServlet {
 
 		} else if (act.equals("delete")) {
 			try {
-				Integer tempId = Integer.parseInt(request.getParameter("ID"));
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				CerealBox boxToDelete = cbh.searchForBoxById(tempId);
 				cbh.deleteBox(boxToDelete);
 
@@ -57,7 +57,7 @@ public class navigationServlet extends HttpServlet {
 
 		} else if (act.equals("edit")) {
 			try {
-				Integer tempId = Integer.parseInt(request.getParameter("ID"));
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				CerealBox boxToEdit = cbh.searchForBoxById(tempId);
 				request.setAttribute("boxToEdit", boxToEdit);
 				getServletContext().getRequestDispatcher("/edit-box.jsp").forward(request, response);

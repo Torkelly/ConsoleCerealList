@@ -12,11 +12,11 @@ public class CerealBox {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
+	@Column(name="BOX_ID")
 	private int id;
-	@Column(name="Name")
+	@Column(name="NAME")
 	private String name;
-	@Column(name="Flavor")
+	@Column(name="FLAVOR")
     private String flavor;
     
 	public CerealBox(String name, String flavor) {
@@ -29,11 +29,11 @@ public class CerealBox {
 		super();
 	}
 	
-	public int getID() {
+	public int getId() {
 		return id;
 	}
 
-	public void setID(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

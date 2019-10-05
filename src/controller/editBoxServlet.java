@@ -39,7 +39,7 @@ public class editBoxServlet extends HttpServlet {
 		
 		String name = request.getParameter("name");
 		String flavor = request.getParameter("flavor");
-		Integer tempId = Integer.parseInt(request.getParameter("ID"));
+		Integer tempId = Integer.parseInt(request.getParameter("id"));
 		
 		CerealBox boxToUpdate = cbh.searchForBoxById(tempId);
 		boxToUpdate.setName(name);

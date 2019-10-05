@@ -50,10 +50,10 @@ public class StartProgram {
 			if (!found.isEmpty()) {
 				System.out.println("Found Results.");
 				for (CerealBox l : found) {
-					System.out.println(l.getID() + " : " + l.getName() + ", " + l.getFlavor());
+					System.out.println(l.getId() + " : " + l.getName() + ", " + l.getFlavor());
 			}
 				
-				System.out.print("Which ID to edit: ");
+				System.out.print("Which id to edit: ");
 				int idToEdit = in.nextInt();
 				CerealBox toEdit = cbh.searchForBoxById(idToEdit);
 				System.out.println("Retrieved " + toEdit.getName() + ", " + toEdit.getFlavor() + " flavored.");

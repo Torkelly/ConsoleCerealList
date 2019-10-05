@@ -11,7 +11,7 @@ import model.CerealBox;
 
 public class CerealBoxHelper {
 
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("ConsoleCerealList");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("WebCerealList");
 	
 	public void insertBox(CerealBox cb) {
 		EntityManager em = emfactory.createEntityManager();
@@ -21,7 +21,6 @@ public class CerealBoxHelper {
 		em.close();
 	}
 	
-	@SuppressWarnings(value = { "unchecked" })
 	public List<CerealBox> showAllBoxes() {
 		EntityManager em = emfactory.createEntityManager();
 		List<CerealBox> allBoxes = em.createQuery("SELECT i FROM CerealBox i").getResultList();
@@ -57,7 +56,7 @@ public class CerealBoxHelper {
 	public List<CerealBox> searchForBoxByName(String cerealName)	{
 	    EntityManager em = emfactory.createEntityManager();
 	    em.getTransaction().begin();
-	    TypedQuery<CerealBox> typedQuery = em.createQuery("select cb from CerealBox cb where cb.name = :selectedName",	CerealBox.class);
+	    TypedQuery<CerealBox> typedQuery = em.createQuery("select cb from CerealBox cb where cb.name = :selectedName", CerealBox.class);
 	    typedQuery.setParameter("selectedName", cerealName);
 	    List<CerealBox>	found =	typedQuery.getResultList();
 	    em.close();

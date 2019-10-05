@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class viewAllBoxesServlet
+ * Servlet implementation class addBoxesForListServlet
  */
-@WebServlet("/viewAllBoxesServlet")
-public class viewAllBoxesServlet extends HttpServlet {
+@WebServlet("/addBoxesForListServlet")
+public class addBoxesForListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public viewAllBoxesServlet() {
+    public addBoxesForListServlet() {
         super();
     }
 
@@ -26,19 +26,22 @@ public class viewAllBoxesServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CerealBoxHelper cbh = new CerealBoxHelper();
-		request.setAttribute("allBoxes", cbh.showAllBoxes());
 		
+		request.setAttribute("allBoxes", cbh.showAllBoxes());
+					
 		if(cbh.showAllBoxes().isEmpty()){
-			request.setAttribute("allBoxes", " ");
+				request.setAttribute("allBoxes", " ");
 		}
-		getServletContext().getRequestDispatcher("/cerealBoxList.jsp").forward(request, response);
+		
+		getServletContext().getRequestDispatcher("/new-list.jsp").forward(request, response);
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);	
+		doGet(request, response);
 	}
 
 }
