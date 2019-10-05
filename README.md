@@ -1,2 +1,2 @@
 # ConsoleCerealList
- JPA - first submission
+ JPA/JSPS/Servlets
