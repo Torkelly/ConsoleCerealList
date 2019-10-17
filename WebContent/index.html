@@ -3,11 +3,28 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Home</title>
+
+         <script>
+         	
+         	function checkInput() {
+         		var name = document.forms["addBoxForm"]["name"].value;
+         		var flavor = document.forms["addBoxForm"]["flavor"].value;
+         		if(name == "" || flavor == "") {
+         			alert("Invalid input. Cannot be null!");
+         			return false;
+         		}
+         		else if(!isNaN(name) || !isNaN(flavor)) {
+         			alert("Invalid input. Cannot be an integer!");
+         			return false;
+         		}
+         	}
+         
+         </script>
 </head>
 <body>
-     <form action = "addBoxServlet" method="post">
-         Cereal: <input type ="text" name = "name">
-         Flavor: <input type = "text" name = "flavor">
+     <form name = "addBoxForm" action = "addBoxServlet" onsubmit = "return checkInput()" method="post" >
+         Name:<input type = "text" name = "name">
+         Flavor:<input type = "text" name = "flavor">
          <input type = "submit" value="Add Box">
      </form> <br />
 <a href = "viewAllBoxesServlet">View the complete list</a><br />

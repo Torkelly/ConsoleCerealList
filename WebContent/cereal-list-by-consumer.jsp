@@ -6,10 +6,27 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Consumer's Lists</title>
+<!-- I thought maybe I could still have the page load if there weren't any IDs for the form to load but it didn't work.
+<script>
+
+	function checkIfListExists() {
+		var box = document.forms["consumerLists"]["id"];
+		var form = document.getElementById("consumerListsId");
+		var elements = form.elements;
+		if(typeof box.value === 'undefined') {
+			document.write("There are no existing lists. Click 'add' to create one.");
+			document.forms["consumerLists"].disabled = "disabled";
+		}
+	}
+
+	checkIfListExists();
+</script>
+  -->
+
+
 </head>
 <body>
-<body>
-<form method = "post" action = "listNavigationServlet">
+<form name = "consumerLists" method = "post" action = "listNavigationServlet">
 <table>
 <c:forEach items="${requestScope.allLists}" var="currentList">
 <tr>
@@ -25,13 +42,13 @@
   </c:forEach>
 </c:forEach>
 </table>
-<input type = "submit" value = "edit" name="doThisToBox">
-<input type = "submit" value = "delete" name="doThisToBox">
-<input type="submit" value = "add" name = "doThisToBox">
+	<input type = "submit" value = "edit" name="doThisToBox">
+    <input type = "submit" value = "delete" name="doThisToBox">
+    <input type="submit" value = "add" name = "doThisToBox">
 </form>
+
+
 <a href="addBoxesForListServlet">Create a new List</a>
 <a href="index.html">Insert a new box</a>
-</body>
-
 </body>
 </html>
